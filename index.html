@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238B5CF6'><path d='M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="감각적인 다크 테마의 영화 추천 웹사이트 CINEPICK! 장르별 탐색, 실시간 검색, 오늘 뭐 볼까 랜덤 추천, 찜하기 기능까지!" />
+    <title>CINEPICK - 취향 저격 영화 추천</title>
+    <!-- 웹폰트 프리로드 (Pretendard & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      // 사용자가 탐색기에서 index.html을 더블클릭(file://)하여 열었을 때 자동 처리
+      if (window.location.protocol === 'file:') {
+        // 실행 중인 로컬 서버로 즉시 리디렉션 시도
+        setTimeout(function() {
+          window.location.replace('http://localhost:5173/');
+        }, 100);
+      }
+    </script>
+    <style>
+      /* file:// 프로토콜로 열렸을 때 하얀 화면 대신 나타나는 안내 화면 */
+      #file-notice-container {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: #0b0f19;
+        color: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        z-index: 999999;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 24px;
+      }
+      .notice-box {
+        background: #141c2d;
+        border: 1px solid rgba(139, 92, 246, 0.4);
+        border-radius: 20px;
+        padding: 40px 32px;
+        max-width: 520px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(139, 92, 246, 0.2);
+      }
+      .notice-logo {
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+        color: #fff;
+      }
+      .notice-logo span {
+        color: #c084fc;
+      }
+      .notice-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+        color: #f8fafc;
+      }
+      .notice-desc {
+        font-size: 0.95rem;
+        color: #94a3b8;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+      .notice-btn {
+        display: inline-block;
+        padding: 14px 28px;
+        background: linear-gradient(135deg, #7c3aed 0%, #c084fc 100%);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 9999px;
+        font-weight: 700;
+        font-size: 1.05rem;
+        box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+        transition: transform 0.2s ease;
+      }
+      .notice-btn:hover {
+        transform: scale(1.04);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- file:// 프로토콜 오픈 시 안내 화면 -->
+    <div id="file-notice-container">
+      <div class="notice-box">
+        <div class="notice-logo">CINE<span>PICK</span></div>
+        <div class="notice-title">로컬 개발 서버로 연결 중입니다...</div>
+        <p class="notice-desc">
+          React 웹 애플리케이션은 보안상 파일을 직접 열면 작동하지 않으며, 로컬 서버 주소로 접속해야 합니다.<br><br>
+          자동으로 이동되지 않으면 아래 버튼을 눌러주세요!
+        </p>
+        <a href="http://localhost:5173/" class="notice-btn">
+          👉 CINEPICK 웹사이트 열기 (http://localhost:5173/)
+        </a>
+      </div>
+    </div>
+    <script>
+      if (window.location.protocol === 'file:') {
+        document.getElementById('file-notice-container').style.display = 'flex';
+      }
+    </script>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
